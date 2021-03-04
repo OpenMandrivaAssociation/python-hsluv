@@ -29,6 +29,6 @@ sed -i -e 's/\r//' README.md
 %py_install
 
 %files -n python-%{pypi_name}
-%{python_sitelib}/%{pypi_name}/
+%{python_sitelib}/%{pypi_name}
 %{python_sitelib}/%{pypi_name}-*.egg-info/
 %{python_sitelib}/__pycache__/*
