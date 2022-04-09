@@ -29,5 +29,5 @@ sed -i -e 's/\r//' README.md
 %py_install
 
 %files
-%{python_sitelib}/%{pypi_name}/hsluv.py
+%{python_sitelib}/hsluv.py
 %{python_sitelib}/%{pypi_name}-*.egg-info/
