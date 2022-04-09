@@ -2,7 +2,7 @@
 
 Name:           python-%{pypi_name}
 Version:        5.0.2
-Release:        1
+Release:        2
 Summary:        Human-friendly HSL
 License:        MIT
 URL:            https://github.com/hsluv/hsluv-python
@@ -31,4 +31,3 @@ sed -i -e 's/\r//' README.md
 %files -n python-%{pypi_name}
 %{python_sitelib}/%{pypi_name}*
 %{python_sitelib}/%{pypi_name}-*.egg-info/
-%{python_sitelib}/__pycache__/*
