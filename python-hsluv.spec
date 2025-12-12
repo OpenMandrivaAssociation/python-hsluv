@@ -2,7 +2,7 @@
 
 Name:           python-%{pypi_name}
 Version:        5.0.2
-Release:        3
+Release:        4
 Summary:        Human-friendly HSL
 License:        MIT
 URL:            https://github.com/hsluv/hsluv-python
