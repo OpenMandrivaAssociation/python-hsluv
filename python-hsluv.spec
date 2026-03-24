@@ -1,33 +1,36 @@
-%global pypi_name hsluv
+%global module hsluv
+%bcond tests 1
 
-Name:           python-%{pypi_name}
-Version:        5.0.2
-Release:        5
-Summary:        Human-friendly HSL
-License:        MIT
-URL:            https://github.com/hsluv/hsluv-python
-Source:         https://files.pythonhosted.org/packages/91/bf/6f819c811c2f6ed71e3cd619b66571850ef8e1fc13966b760c04d852ee97/hsluv-%{version}.tar.gz
+Name:		python-hsluv
+Version:	5.0.4
+Release:	1
+Summary:	Human-friendly HSL
+License:	MIT
+Group:		Development/Python
+URL:		https://github.com/hsluv/hsluv-python
+Source: 	%{URL}/archive/v%{version}/%{name}-%{version}.tar.gz
 
-BuildArch:      noarch
-BuildRequires:  pkgconfig(python)
-BuildRequires:  python3dist(setuptools)
-
-Provides:	python-%{pypi_name} = %{EVRD}
+BuildSystem:	python
+BuildArch:	noarch
+BuildRequires:	pkgconfig(python)
+BuildRequires:	python%{pyver}dist(setuptools)
+%if %{with tests}
+BuildRequires:	python%{pyver}dist(pytest)
+%endif
+Provides:	python-%{module} = %{EVRD}
 
 %description
 A Python implementation of HSLuv (revision 4).
 
-%prep
-%autosetup -n %{pypi_name}-%{version}
-rm -vrf *.egg-info
-sed -i -e 's/\r//' README.md
-
-%build
-%py_build
-
-%install
-%py_install
+%if %{with tests}
+%check
+export CI=true
+export PYTHONPATH="%{buildroot}%{python_sitelib}:${PWD}"
+pytest
+%endif
 
 %files
-%{python_sitelib}/hsluv.py
-%{python_sitelib}/%{pypi_name}-*.egg-info/
+%doc README.md
+%license LICENSE.txt
+%{python_sitelib}/%{module}.py
+%{python_sitelib}/%{module}-%{version}*.*-info
