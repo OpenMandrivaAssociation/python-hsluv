@@ -3,7 +3,7 @@
 
 Name:		python-hsluv
 Version:	5.0.4
-Release:	1
+Release:	2
 Summary:	Human-friendly HSL
 License:	MIT
 Group:		Development/Python
@@ -12,7 +12,7 @@ Source: 	%{URL}/archive/v%{version}/%{name}-%{version}.tar.gz
 
 BuildSystem:	python
 BuildArch:	noarch
-BuildRequires:	pkgconfig(python)
+BuildRequires:	pkgconfig(python3)
 BuildRequires:	python%{pyver}dist(setuptools)
 %if %{with tests}
 BuildRequires:	python%{pyver}dist(pytest)
